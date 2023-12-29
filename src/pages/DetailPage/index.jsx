@@ -9,6 +9,7 @@ import { Balance } from "../../assets/Balance";
 import { Vector } from "../../assets/Vector";
 import Type from "../../components/Type";
 import BaseStat from "../../components/BaseStat";
+import DamageRelations from "../../components/DamageRelations";
 
 const DetailPage = () => {
   const [pokemon, setPokemon] = useState();
@@ -29,7 +30,7 @@ const DetailPage = () => {
         const { name, id, types, weight, height, stats, abilities } =
           pokemonData;
         const nextAndPreviousPokemon = await getNextAndPreviousPokemon(id);
-        const DamageRelations = await Promise.all(
+        const damageRelations = await Promise.all(
           types.map(async (i) => {
             const type = await axios.get(i.type.url);
             return type.data.damage_relations;
@@ -44,7 +45,7 @@ const DetailPage = () => {
           next: nextAndPreviousPokemon.next,
           abilities: formatPokemonAblities(abilities),
           stats: formatPokemonStats(stats),
-          DamageRelations,
+          damageRelations,
           types: types.map((type) => type.type.name),
         };
 
@@ -219,16 +220,13 @@ const DetailPage = () => {
             </table>
           </div>
 
-          <h2 className={`text-base font-semibold ${text}`}>설명</h2>
-          <p className="text-md leading-4 font-sans text-zinc-200 max-w-[30rem] text-center">
-            {pokemon.description}
-          </p>
-
-          <div className="flex my-8 flex-wrap justify-center">
-            {/* {pokemon.sprites.map((url, index) => (
-              <img key={index} src={url} alt="sprite" />
-            ))} */}
-          </div>
+          {pokemon.damageRelations && (
+            <div className="w-10/12">
+              <h2 className="text-base text-center font-semibold ">
+                <DamageRelations damages={pokemon.damageRelations} />
+              </h2>
+            </div>
+          )}
         </section>
       </div>
     </article>
