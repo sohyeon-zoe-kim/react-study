@@ -11,7 +11,7 @@ const LazyImage = ({ url, alt }) => {
   return (
     <>
       {isLoading && (
-        <div className="absolute h-full z-10 w-full flex items-center justify-center">
+        <div className="absolute h-full z-10 w-full flex items-center justify-center text-white">
           ...loading
         </div>
       )}

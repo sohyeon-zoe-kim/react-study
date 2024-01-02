@@ -151,11 +151,11 @@ const DetailPage = () => {
   return (
     <article className="flex items-center gap-1 flex-col w-full">
       <div
-        className={`${bg} w-auto h-full flex flex-col z-0 items-center justify-end relative overflow-hidden`}
+        className={`${bg} w-full h-full flex flex-col z-0 items-center justify-end relative overflow-hidden`}
       >
         {pokemon.previous && (
           <Link
-            className="absolute top-[40%] -translate-y-1/2 z-50 left-1"
+            className="absolute top-[40%] -translate-y-1/2 z-50 left-4"
             to={`/pokemon/${pokemon.previous}`}
           >
             <LessThan className="w-5 h-8 p-1" />
@@ -163,14 +163,14 @@ const DetailPage = () => {
         )}
         {pokemon.next && (
           <Link
-            className="absolute top-[40%] -translate-y-1/2 z-50 right-1"
+            className="absolute top-[40%] -translate-y-1/2 z-50 right-4"
             to={`/pokemon/${pokemon.next}`}
           >
             <GreaterThan className="w-5 h-8 p-1" />
           </Link>
         )}
         <section className="w-full flex flex-col z-20 items-center justify-end relative h-full">
-          <div className="absolute z-30 top-6 flex items-center w-full justify-between px-2">
+          <div className="absolute z-30 top-6 flex items-center w-full justify-between px-4">
             <div className="flex items-center gap-1">
               <Link to="/">
                 <ArrowLeft className="w-6 h-8 text-zinc-200" />
@@ -233,7 +233,7 @@ const DetailPage = () => {
             </div>
           </div>
           <h2 className={`text-base font-semibold ${text}`}>기본 능력치</h2>
-          <div className="w-full">
+          <div className="w-full flex justify-center items-center">
             <table>
               <tbody>
                 {pokemon.stats.map((stat) => (
@@ -248,7 +248,7 @@ const DetailPage = () => {
             </table>
           </div>
           <h2 className={`text-base font-semibold ${text}`}>설명</h2>
-          <p className="text-md leading-4 font-sans text-zinc-200 max-w-[30rem] text-center">
+          <p className="text-md leading-5 font-sans text-zinc-200 max-w-[30rem] text-center">
             {pokemon.description}
           </p>
           <div className="flex my-8 flex-wrap justify-center">
