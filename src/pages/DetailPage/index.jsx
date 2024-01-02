@@ -222,7 +222,7 @@ const DetailPage = () => {
 
           {pokemon.damageRelations && (
             <div className="w-10/12">
-              <h2 className="text-base text-center font-semibold ">
+              <h2 className={`text-base text-center font-semibold ${text}`}>
                 <DamageRelations damages={pokemon.damageRelations} />
               </h2>
             </div>
