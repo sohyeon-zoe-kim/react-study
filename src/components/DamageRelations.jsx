@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Type from "../components/Type";
 
 const DamageRelations = ({ damages }) => {
   const [damagePokemonForm, setDamagePokemonForm] = useState();
@@ -43,6 +44,8 @@ const DamageRelations = ({ damages }) => {
       no_damage: "0x",
     };
 
+    console.log(props);
+
     return Object.entries(props).reduce((acc, [keyName, value]) => {
       const key = keyName;
       const verifiedValue = filterForUniqueValues(value, duplicateValues[key]);
@@ -57,7 +60,7 @@ const DamageRelations = ({ damages }) => {
 
       return filterAcc.length === acc.length
         ? (acc = [currentValue, ...acc])
-        : (acc = [{ damageValue: damageValue, name, url }, ...acc]);
+        : (acc = [{ damageValue: damageValue, name, url }, ...filterAcc]);
     }, []);
   };
 
@@ -104,7 +107,46 @@ const DamageRelations = ({ damages }) => {
     return result;
   };
 
-  return <div>DamageRelations</div>;
+  return (
+    <div className="flex gap-2 flex-col">
+      {damagePokemonForm ? (
+        <>
+          {Object.entries(damagePokemonForm).map(([keyName, value]) => {
+            const key = keyName;
+            const valuesOfKeyName = {
+              double_damage: "Week",
+              half_damage: "Resistant",
+              no_damage: "Immune",
+            };
+
+            return (
+              <div key={key}>
+                <h3>{valuesOfKeyName[key]}</h3>
+                <div className="flex flex-wrap gap-1 justify-center">
+                  {value.length > 0 ? (
+                    value.map(({ name, url, damageValue }) => {
+                      return (
+                        <Type
+                          key={name}
+                          type={name}
+                          url={url}
+                          damageValue={damageValue}
+                        />
+                      );
+                    })
+                  ) : (
+                    <Type type={"none"} key={"none"} />
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </>
+      ) : (
+        <div></div>
+      )}
+    </div>
+  );
 };
 
 export default DamageRelations;
