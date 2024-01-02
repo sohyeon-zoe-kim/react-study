@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import DamageRelations from "./DamageRelations";
 import useOnClickOutside from "../hooks/useOnClickOutside";
+import ReactDOM from "react-dom";
 
 const DamageModal = ({ setIsModalOpen, damages }) => {
   const ref = useRef(null);
   useOnClickOutside(ref, () => setIsModalOpen(false));
-  return (
+  return ReactDOM.createPortal(
     <div className="flex items-center justify-center z-40 fixed left-0 bottom-0 w-full h-full bg-gray-800">
       <div ref={ref} className="modal bg-white rounded-lg w-1/2 ">
         <div className="flex flex-col items-start p-4">
@@ -21,7 +22,8 @@ const DamageModal = ({ setIsModalOpen, damages }) => {
           <DamageRelations damages={damages} />
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("portal")
   );
 };
 

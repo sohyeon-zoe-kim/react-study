@@ -218,13 +218,13 @@ const DetailPage = () => {
             </table>
           </div>
         </section>
+        {isModalOpen && (
+          <DamageModal
+            setIsModalOpen={setIsModalOpen}
+            damages={pokemon.damageRelations}
+          />
+        )}
       </div>
-      {isModalOpen && (
-        <DamageModal
-          setIsModalOpen={setIsModalOpen}
-          damages={pokemon.damageRelations}
-        />
-      )}
     </article>
   );
 };
