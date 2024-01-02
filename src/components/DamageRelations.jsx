@@ -44,8 +44,6 @@ const DamageRelations = ({ damages }) => {
       no_damage: "0x",
     };
 
-    console.log(props);
-
     return Object.entries(props).reduce((acc, [keyName, value]) => {
       const key = keyName;
       const verifiedValue = filterForUniqueValues(value, duplicateValues[key]);
@@ -120,7 +118,7 @@ const DamageRelations = ({ damages }) => {
             };
 
             return (
-              <div key={key}>
+              <div key={key} className="flex flex-col items-center gap-2">
                 <h3>{valuesOfKeyName[key]}</h3>
                 <div className="flex flex-wrap gap-1 justify-center">
                   {value.length > 0 ? (

@@ -9,11 +9,12 @@ import { Balance } from "../../assets/Balance";
 import { Vector } from "../../assets/Vector";
 import Type from "../../components/Type";
 import BaseStat from "../../components/BaseStat";
-import DamageRelations from "../../components/DamageRelations";
+import DamageModal from "../../components/DamageModal";
 
 const DetailPage = () => {
   const [pokemon, setPokemon] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const params = useParams();
   const pokemonId = params.id;
   const baseUrl = `https://pokeapi.co/api/v2/pokemon/`;
@@ -161,7 +162,7 @@ const DetailPage = () => {
               loading="lazy"
               alt={pokemon.name}
               className={`object-contain h-full cursor-pointer`}
-              onClick={() => console.log("click")}
+              onClick={() => setIsModalOpen(true)}
             />
           </div>
         </section>
@@ -172,9 +173,7 @@ const DetailPage = () => {
               <Type key={type} type={type} />
             ))}
           </div>
-
           <h2 className={`text-base font-semibold ${text}`}>정보</h2>
-
           <div className="flex w-full items-center justify-between max-w-[400px] text-center">
             <div className="w-full">
               <h4 className="text-[0.5rem] text-zinc-100">Weight</h4>
@@ -203,7 +202,6 @@ const DetailPage = () => {
               ))}
             </div>
           </div>
-
           <h2 className={`text-base font-semibold ${text}`}>기본 능력치</h2>
           <div className="w-full">
             <table>
@@ -219,16 +217,14 @@ const DetailPage = () => {
               </tbody>
             </table>
           </div>
-
-          {pokemon.damageRelations && (
-            <div className="w-10/12">
-              <h2 className={`text-base text-center font-semibold ${text}`}>
-                <DamageRelations damages={pokemon.damageRelations} />
-              </h2>
-            </div>
-          )}
         </section>
       </div>
+      {isModalOpen && (
+        <DamageModal
+          setIsModalOpen={setIsModalOpen}
+          damages={pokemon.damageRelations}
+        />
+      )}
     </article>
   );
 };
