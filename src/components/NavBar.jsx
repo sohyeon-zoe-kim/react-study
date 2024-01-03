@@ -1,15 +1,35 @@
 import styled from "styled-components";
 import { pokemonImg } from "../constants/url";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+} from "firebase/auth";
 import app from "../firebase";
 
 const NavBar = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        navigate("/login");
+      } else if (user && pathname === "/login") {
+        navigate("/");
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [pathname]);
 
   const handleAuth = () => {
     signInWithPopup(auth, provider).then((result) => {
