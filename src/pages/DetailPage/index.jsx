@@ -7,6 +7,7 @@ import { GreaterThan } from "../../assets/GreaterThan";
 import { ArrowLeft } from "../../assets/ArrowLeft";
 import { Balance } from "../../assets/Balance";
 import { Vector } from "../../assets/Vector";
+import { pokemonImg } from "../../constants/url";
 import Type from "../../components/Type";
 import BaseStat from "../../components/BaseStat";
 import DamageModal from "../../components/DamageModal";
@@ -144,7 +145,7 @@ const DetailPage = () => {
     );
   }
 
-  const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon?.id}.png`;
+  const img = `${pokemonImg}/${pokemon?.id}.png`;
   const bg = `bg-${pokemon?.types?.[0]}`;
   const text = `text-${pokemon?.types?.[0]}`;
 
