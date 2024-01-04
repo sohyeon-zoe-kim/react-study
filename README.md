@@ -1,9 +1,14 @@
-# React + Vite
+# 포켓몬 도감
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+poke API를 사용하여 포켓몬 도감 웹 사이트를 React로 개발한 프로젝트입니다. 포켓몬 리스트/상세 페이지 및 로그인 페이지로 구성되어 있으며, Firebase 서비스를 사용하여 유저 로그인 기능을 구현하였습니다.
 
-Currently, two official plugins are available:
+### 기술 스택
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# react-pokemon-app
+React
+TypeScript
+styled-components
+tailwind-css
+
+### 배포 URL
+
+https://pokemon.sohyeonkim.com
