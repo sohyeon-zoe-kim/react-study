@@ -11,12 +11,9 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../firebase";
+import storage from "../utils/storage";
 
-const UsesrDataFromStorage = localStorage.getItem("userData");
-
-const initialUserData = UsesrDataFromStorage
-  ? JSON.parse(UsesrDataFromStorage)
-  : null;
+const initialUserData = storage.get<User>("userData");
 
 const NavBar = () => {
   const auth = getAuth(app);
@@ -44,7 +41,7 @@ const NavBar = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         setUserData(result.user);
-        localStorage.setItem("userData", JSON.stringify(result.user));
+        storage.set("userData", result.user);
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +52,7 @@ const NavBar = () => {
     signOut(auth)
       .then(() => {
         setUserData(null);
-        localStorage.removeItem("userData");
+        storage.remove("userData");
       })
       .catch((error) => {
         alert(error);
