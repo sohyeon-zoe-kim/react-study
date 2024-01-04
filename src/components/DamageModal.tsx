@@ -1,11 +1,18 @@
-import { useRef } from "react";
-import DamageRelations from "./DamageRelations";
+import React, { useRef } from "react";
+import DamageRelations from "./DamageRelations.tsx";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 import ReactDOM from "react-dom";
+import { DamageRelations as DamageRelationsProps } from "../types/DamageRelationOfPokemonTypes";
 
-const DamageModal = ({ setIsModalOpen, damages }) => {
-  const ref = useRef(null);
+interface DamageModalProps {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  damages: DamageRelationsProps[];
+}
+
+const DamageModal = ({ setIsModalOpen, damages }: DamageModalProps) => {
+  const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, () => setIsModalOpen(false));
+
   return ReactDOM.createPortal(
     <div className="flex items-center justify-center z-40 fixed left-0 bottom-0 w-full h-full bg-gray-800">
       <div ref={ref} className="modal bg-white rounded-lg w-1/2 ">
@@ -23,7 +30,7 @@ const DamageModal = ({ setIsModalOpen, damages }) => {
         </div>
       </div>
     </div>,
-    document.getElementById("portal")
+    document.getElementById("portal")!
   );
 };
 
