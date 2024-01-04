@@ -4,10 +4,10 @@ poke API를 사용하여 포켓몬 도감 웹 사이트를 React로 개발한 �
 
 ### 기술 스택
 
-React
-TypeScript
-styled-components
-tailwind-css
+React  
+TypeScript  
+styled-components  
+tailwind-css  
 
 ### 배포 URL
 
