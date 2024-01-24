@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import DamageRelations from "./DamageRelations.tsx";
-import useOnClickOutside from "../hooks/useOnClickOutside";
+import useOnClickOutside from "../hooks/useOnClickOutside.js";
 import ReactDOM from "react-dom";
-import { DamageRelations as DamageRelationsProps } from "../types/DamageRelationOfPokemonTypes";
+import { DamageRelations as DamageRelationsProps } from "../types/DamageRelationOfPokemonTypes.ts";
 
 interface DamageModalProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
