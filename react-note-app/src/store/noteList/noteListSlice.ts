@@ -18,7 +18,15 @@ const initialState: NoteState = {
 const noteListSlice = createSlice({
   name: "noteList",
   initialState,
-  reducers: {},
+  reducers: {
+    removeTags: (state, { payload }) => {
+      state.mainNotes = state.mainNotes.map((note) => ({
+        ...note,
+        tags: note.tags.filter(({ tag }) => tag !== payload.tag),
+      }));
+    },
+  },
 });
 
+export const { removeTags } = noteListSlice.actions;
 export default noteListSlice.reducer;
