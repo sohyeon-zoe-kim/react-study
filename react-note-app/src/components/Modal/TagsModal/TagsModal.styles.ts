@@ -14,7 +14,7 @@ export const Box = styled.div`
     justify-content: space-between;
     align-items: center;
     .editTags__title {
-      font-weight: 500;
+      font-family: "LondrinaLight";
       font-size: 1.3rem;
     }
     .editTags__close {
@@ -44,8 +44,8 @@ export const StyledInput = styled.input`
   text-indent: 5px;
   transition: 150ms border ease-in;
   font-size: clamp(1.1rem, 2vw, 1.2rem);
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "LondrinaLight";
   &:focus {
     border-bottom: 2px solid black;
   }

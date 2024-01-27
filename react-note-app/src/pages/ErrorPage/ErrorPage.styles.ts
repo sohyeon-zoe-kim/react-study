@@ -22,7 +22,7 @@ export const Container = styled.div`
     div {
       margin-bottom: 30px;
       font-size: clamp(1.2rem, 2vw, 1.5rem);
-      font-weight: 600;
+      font-family: "LondrinaRegular";
     }
   }
   @media only screen and (max-width: 950px) {
@@ -33,4 +33,3 @@ export const Container = styled.div`
     }
   }
 `;
-

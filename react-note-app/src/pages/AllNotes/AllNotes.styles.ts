@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const TopBox = styled.div`
   margin-right: 25px;
-  
+
   .notes__filter-btn {
     display: flex;
     justify-content: flex-end;
   }
-  
+
   @media screen and (max-width: 650px) {
-    margin-right: 0px;  
+    margin-right: 0px;
   }
 `;
 
@@ -44,12 +44,12 @@ export const InputBox = styled.div`
 export const Box = styled.div`
   .allNotes__notes-type {
     margin-bottom: 15px;
-    font-weight: 600;
+    font-family: "LondrinaRegular";
     color: rgba(0, 0, 0, 0.5);
     font-size: 1.2rem;
     span {
       color: rgba(0, 0, 0, 0.5);
-      font-weight: 500;
+      font-family: "LondrinaLight";
       font-size: 15px;
     }
   }

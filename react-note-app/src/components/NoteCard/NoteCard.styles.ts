@@ -26,7 +26,7 @@ export const TopBox = styled.div`
   align-items: flex-start;
 
   .noteCard__title {
-    font-weight: 600;
+    font-family: "LondrinaRegular";
     font-size: 1.15rem;
     cursor: pointer;
   }
@@ -38,7 +38,7 @@ export const TopBox = styled.div`
     .noteCard__priority {
       text-transform: uppercase;
       font-size: 12px;
-      font-weight: 600;
+      font-family: "LondrinaRegular";
       margin-right: 10px;
     }
 
@@ -76,7 +76,7 @@ export const TagsBox = styled.div`
     padding: 2px 5px;
     border-radius: 5px;
     font-size: 11px;
-    font-weight: 500;
+    font-family: "LondrinaLight";
     margin-right: 8px;
   }
 
@@ -92,7 +92,7 @@ export const FooterBox = styled.div`
 
   .noteCard__date {
     font-size: 12px;
-    font-weight: 500;
+    font-family: "LondrinaLight";
     color: rgba(0, 0, 0, 0.6);
   }
 `;

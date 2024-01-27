@@ -43,7 +43,7 @@ export const StyledLogo = styled.div`
   }
   span {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-family: "LondrinaRegular";
   }
 `;
 
@@ -54,7 +54,7 @@ export const ItemsBox = styled.ul`
     list-style: none;
     display: flex;
     align-items: center;
-    font-weight: 500;
+    font-family: "LondrinaLight";
 
     cursor: pointer;
 

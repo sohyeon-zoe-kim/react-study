@@ -33,11 +33,11 @@ export const Container = styled.div`
   justify-content: space-between;
 
   .nav__page-title {
-    font-weight: 600;
+    font-family: "LondrinaRegular";
     font-size: 1.3rem;
   }
 
   @media screen and (max-width: 950px) {
-    margin-top: 7px
+    margin-top: 7px;
   }
 `;

@@ -16,7 +16,7 @@ export const NotesContainer = styled.div`
 export const EmptyMsgBox = styled.div`
   text-align: center;
   font-size: clamp(1.2rem, 2vw, 1.3rem);
-  font-weight: 500;
+  font-family: "LondrinaLight";
 `;
 
 export const ButtonFill = styled.button`
@@ -26,7 +26,7 @@ export const ButtonFill = styled.button`
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
   transition: 250ms background-color ease-in-out;
   span {
-    font-weight: 500;
+    font-family: "LondrinaLight";
     font-size: clamp(15px, 3.5vw, 1.2rem);
   }
   background-color: var(--primary-color);
@@ -51,7 +51,7 @@ export const ButtonOutline = styled.button`
   white-space: nowrap;
 
   span {
-    font-weight: 500;
+    font-family: "LondrinaLight";
     font-size: clamp(15px, 3.5vw, 1.2rem);
     margin-left: 5px;
   }

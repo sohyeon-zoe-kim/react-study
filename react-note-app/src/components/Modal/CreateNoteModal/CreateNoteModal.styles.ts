@@ -18,7 +18,7 @@ export const TopBox = styled.div`
   justify-content: space-between;
   align-items: center;
   .createNote__title {
-    font-weight: 600;
+    font-family: "LondrinaRegular";
     font-size: clamp(1.4rem, 3vw, 1.6rem);
   }
   .createNote__close-btn {
@@ -53,7 +53,7 @@ export const AddedTagsBox = styled.div`
     padding: 4px 10px;
     border-radius: 10px;
     font-size: 13px;
-    font-weight: 500;
+    font-family: "LondrinaLight";
     margin-right: 10px;
     span {
       display: flex;

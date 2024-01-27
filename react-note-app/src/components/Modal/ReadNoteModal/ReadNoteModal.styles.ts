@@ -17,7 +17,7 @@ export const Box = styled.div`
 
   .readNote__title {
     font-size: clamp(1.3rem, 3vw, 1.4rem);
-    font-weight: 600;
+    font-family: "LondrinaRegular";
     margin-bottom: 12px;
   }
 

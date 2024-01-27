@@ -24,17 +24,17 @@ export const TopBox = styled.div`
   .filters__title {
     flex-basis: 25%;
     font-size: clamp(1.1rem, 1.8vw, 1.2rem);
-    font-weight: 500;
+    font-family: "LondrinaLight";
     margin-right: 20px;
   }
 
   .filters__delete {
     color: red;
     cursor: pointer;
-    font-weight: 500;
+    font-family: "LondrinaLight";
     font-size: clamp(13px, 1.2vw, 14px);
     &:hover {
-      font-weight: 600;
+      font-family: "LondrinaRegular";
     }
   }
 `;
@@ -43,7 +43,7 @@ export const Box = styled.div`
   margin-top: 20px;
   .filters__subtitle {
     font-size: clamp(14px, 1.4vw, 15px);
-    font-weight: 600;
+    font-family: "LondrinaRegular";
     margin-bottom: 10px;
     color: rgba(0, 0, 0, 0.6);
   }
@@ -53,7 +53,7 @@ export const Box = styled.div`
     align-items: center;
     margin-bottom: 4px;
     font-size: clamp(13.5px, 1.2vw, 14.5px);
-    font-weight: 500;
+    font-family: "LondrinaLight";
     color: rgba(0, 0, 0, 0.9);
     input {
       width: 13px;
