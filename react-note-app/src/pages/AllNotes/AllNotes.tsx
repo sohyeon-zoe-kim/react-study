@@ -7,7 +7,7 @@ import getAllNotes from "../../utils/getAllNotes";
 
 const AllNotes = () => {
   const dispatch = useAppDisPatch();
-  const { mainNotes } = useAppSelector((state) => state.nodeList);
+  const { mainNotes } = useAppSelector((state) => state.noteList);
   const [filter, setFilter] = useState("");
   const [searchInput, setSearchInput] = useState("");
 

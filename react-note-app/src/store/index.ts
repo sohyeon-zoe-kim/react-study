@@ -9,7 +9,7 @@ export const store = configureStore({
     menu: menuReducer,
     modal: modalReducer,
     tags: tagsReducer,
-    nodeList: noteListReducer,
+    noteList: noteListReducer,
   },
 });
 
