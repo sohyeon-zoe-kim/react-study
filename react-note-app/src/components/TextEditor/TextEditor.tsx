@@ -11,7 +11,7 @@ interface TextEditorProps {
 
 const TextEditor = ({ color, value, setValue }: TextEditorProps) => {
   return (
-    <Container noteColor={color}>
+    <Container notecolor={color}>
       <ReactQuill theme="snow" value={value} onChange={setValue} />
     </Container>
   );
