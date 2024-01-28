@@ -57,6 +57,7 @@ export const ContentBox = styled.div`
   font-size: 14px;
   cursor: pointer;
   overflow-y: hidden;
+  word-break: break-all;
 
   img {
     width: 80px;

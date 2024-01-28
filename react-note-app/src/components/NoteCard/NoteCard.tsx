@@ -12,6 +12,7 @@ import { Note } from "../../types/note";
 import getRelevantBtns from "../../utils/getRelevantBtns";
 import { useAppDisPatch } from "../../hooks/redux";
 import { setPinnedNotes } from "../../store/noteList/noteListSlice";
+import parse from "html-react-parser";
 
 interface NoteCardProps {
   note: Note;
@@ -23,6 +24,10 @@ const NoteCard = ({ note, type }: NoteCardProps) => {
     note;
 
   const dispatch = useAppDisPatch();
+
+  const sliceContent = () => {
+    return content.length > 75 ? content.slice(0, 75) + "..." : content;
+  };
 
   return (
     <Card style={{ background: color }}>
@@ -42,7 +47,7 @@ const NoteCard = ({ note, type }: NoteCardProps) => {
           )}
         </div>
       </TopBox>
-      <ContentBox>{content}</ContentBox>
+      <ContentBox>{parse(sliceContent())}</ContentBox>
       <TagsBox>
         {tags.map(({ tag, id }) => (
           <span key={id}>{tag}</span>
