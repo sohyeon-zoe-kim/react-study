@@ -12,19 +12,25 @@ import {
   toggleCreateNoteModal,
   toggleTagsModal,
 } from "../../../store/modal/modalSlice";
-import { setEditNote } from "../../../store/noteList/noteListSlice";
+import {
+  setEditNote,
+  setMainNotes,
+} from "../../../store/noteList/noteListSlice";
 import { ButtonFill, ButtonOutline } from "../../../styles/styles";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { v4 } from "uuid";
 import TagsModal from "../TagsModal/TagsModal";
 import { TextEditor } from "../..";
+import { toast } from "react-toastify";
+import dayjs from "dayjs";
+import { Note } from "../../../types/note";
 
 const CreateNoteModal = () => {
   const dispatch = useAppDisPatch();
   const { editNote } = useAppSelector((state) => state.noteList);
   const { viewAddTagsModal } = useAppSelector((state) => state.modal);
   const [noteTitle, setNoteTitle] = useState(editNote?.title || "");
-  const [content, setContent] = useState(editNote?.content || "");
+  const [noteContent, setNoteContent] = useState(editNote?.content || "");
   const [addedTags, setAddedTags] = useState(editNote?.tags || []);
   const [noteColor, setNoteColor] = useState(editNote?.color || "");
   const [priority, setPriority] = useState(editNote?.priority || "row");
@@ -42,6 +48,47 @@ const CreateNoteModal = () => {
     }
 
     setAddedTags(addedTags.filter(({ tag }) => tag !== newTag));
+  };
+
+  const createNoteHandler = () => {
+    if (!noteTitle) {
+      toast.error("타이틀을 적어주세요.");
+      return;
+    }
+
+    if (!noteContent || noteContent === "<<p><br></p>") {
+      toast.error("글을 작성해주세요.");
+      return;
+    }
+
+    const date = dayjs().format("DD/MM/YY h:mm A");
+
+    let note: Partial<Note> = {
+      title: noteTitle,
+      content: noteContent,
+      tags: addedTags,
+      color: noteColor,
+      priority: priority,
+      editedTime: new Date().getTime(),
+    };
+
+    if (editNote) {
+      note = { ...editNote, ...note };
+    } else {
+      note = {
+        ...note,
+        date,
+        createdTime: new Date().getTime(),
+        editedTime: null,
+        isPinned: false,
+        isRead: false,
+        id: v4(),
+      };
+    }
+
+    dispatch(setMainNotes(note));
+    dispatch(toggleCreateNoteModal(false));
+    dispatch(setEditNote(null));
   };
 
   return (
@@ -65,19 +112,11 @@ const CreateNoteModal = () => {
           onChange={(e) => setNoteTitle(e.target.value)}
         />
         <div>
-          <TextEditor color={noteColor} value={content} setValue={setContent} />
-        </div>
-        <div className="createNote__create-btn">
-          <ButtonFill>
-            {editNote ? (
-              <span>저장하기</span>
-            ) : (
-              <>
-                <FaPlus />
-                <span>생성하기</span>
-              </>
-            )}
-          </ButtonFill>
+          <TextEditor
+            color={noteColor}
+            value={noteContent}
+            setValue={setNoteContent}
+          />
         </div>
         <AddedTagsBox>
           {addedTags.map(({ tag, id }) => (
@@ -108,10 +147,10 @@ const CreateNoteModal = () => {
               onChange={(e) => setNoteColor(e.target.value)}
             >
               <option value="">White</option>
-              <option value="ffcccc">Red</option>
-              <option value="ccffcc">Green</option>
-              <option value="cce0ff">Blue</option>
-              <option value="ffffcc">Yellow</option>
+              <option value="#ffcccc">Red</option>
+              <option value="#ccffcc">Green</option>
+              <option value="#cce0ff">Blue</option>
+              <option value="#ffffcc">Yellow</option>
             </select>
           </div>
           <div>
@@ -126,6 +165,18 @@ const CreateNoteModal = () => {
             </select>
           </div>
         </OptionsBox>
+        <div className="createNote__create-btn">
+          <ButtonFill onClick={createNoteHandler}>
+            {editNote ? (
+              <span>저장하기</span>
+            ) : (
+              <>
+                <FaPlus />
+                <span>생성하기</span>
+              </>
+            )}
+          </ButtonFill>
+        </div>
       </Box>
     </FixedContainer>
   );
