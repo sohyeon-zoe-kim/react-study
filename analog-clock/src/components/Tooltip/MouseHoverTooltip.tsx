@@ -5,9 +5,14 @@ import * as S from './MouseHoverTooltip.styles'
 interface MouseHoverTooltipProps {
   children: React.ReactElement
   text: string
+  direction: string
 }
 
-const MouseHoverTooltip = ({ children, text }: MouseHoverTooltipProps) => {
+const MouseHoverTooltip = ({
+  children,
+  text,
+  direction = 'top-right',
+}: MouseHoverTooltipProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   const handleMoveTooltip = (e: React.MouseEvent) => {
@@ -20,7 +25,7 @@ const MouseHoverTooltip = ({ children, text }: MouseHoverTooltipProps) => {
       $x={position.x}
       $y={position.y}>
       {children}
-      <div className="tooltip">{text}</div>
+      <div className={`tooltip ${direction}`}>{text}</div>
     </S.TooltipLayout>
   )
 }
